@@ -3471,31 +3471,6 @@ function getTowerOfHanoiHTML() {
     `;
 }
 
-function initTowerOfHanoi() {
-    const canvas = document.getElementById('hanoiCanvas');
-    const ctx = canvas.getContext('2d');
-    const diskCountInput = document.getElementById('diskCount');
-    const solveBtn = document.getElementById('solveBtn');
-    const resetBtn = document.getElementById('resetHanoi');
-    const moveCountEl = document.getElementById('moveCount');
-    const optimalMovesEl = document.getElementById('optimalMoves');
-    
-    let towers = [[], [], []];
-    let diskCount = 3;
-    let moveCount = 0;
-    let isAnimating = false;
-    let shouldStop = false;
-    
-    const towerX = [200, 400, 600];
-    const baseY = 350;
-    const diskHeight = 20;
-    const maxDiskWidth = 120;
-    const colors = ['#ff6b6b', '#f59e0b', '#10b981', '#06b6d4', '#6366f1', '#8b5cf6', '#ec4899'];
-    
-    function initTowers() {
-        towers = [[], [], []];
-        moveCount = 0;
-        diskCount = parseInt(diskCountInput.value) || 3;
 
         //Reset animation state
         isAnimating = false;
@@ -3840,7 +3815,6 @@ function initializeProject(projectName) {
     if (initializers[projectName]) {
         initializers[projectName]();
     }
-}
 }
 
 //Removed Redundant game and project Logics and seperated them to different individual files located at (web-app/js/projects/)
