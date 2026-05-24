@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var cursorGlow = document.getElementById('cursorGlow');
   var heroProjectCount = document.getElementById('heroProjectCount');
   var heroGameCount = document.getElementById('heroGameCount');
+  var heroMathCount = document.getElementById('heroMathCount');
   var heroUtilityCount = document.getElementById('heroUtilityCount');
   var modal = document.getElementById('projectModal');
   var modalBody = document.getElementById('modalBody');
@@ -250,10 +251,12 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ── Hero Stats ───────────────────────────────────────────── */
   var totalCount = projectCards.length;
   var gameCount = projectCards.filter(function (c) { return c.getAttribute('data-category') === 'games'; }).length;
+  var mathCount = projectCards.filter(function (c) { return c.getAttribute('data-category') === 'math'; }).length;
   var utilityCount = projectCards.filter(function (c) { return c.getAttribute('data-category') === 'utilities'; }).length;
 
   if (heroProjectCount) heroProjectCount.textContent = String(totalCount);
   if (heroGameCount) heroGameCount.textContent = String(gameCount);
+  if (heroMathCount) heroMathCount.textContent = String(mathCount);
   if (heroUtilityCount) heroUtilityCount.textContent = String(utilityCount);
   if (projectCountBadge) projectCountBadge.textContent = String(totalCount) + ' projects';
 

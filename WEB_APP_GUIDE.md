@@ -861,7 +861,6 @@ web-app/
 │
 └── 📁 assets/
     ├── favicon.svg
-    ├── logo.png
     └── images/
 ```
 
@@ -2928,7 +2927,6 @@ web-app/
 │
 └── 📁 assets/
     ├── favicon.svg (Branding)
-    ├── logo.png (Application logo)
     ├── sun.svg (Light theme icon)
     ├── moon.svg (Dark theme icon)
     ├── background.png (Hero background)
@@ -3352,7 +3350,6 @@ self.addEventListener('install', () => {
             '/',
             '/css/styles.css',
             '/js/main.js',
-            '/assets/logo.png'
         ]);
     });
 });
