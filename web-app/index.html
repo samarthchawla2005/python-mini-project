@@ -598,8 +598,9 @@ print('Hello, World!')" spellcheck="false"></textarea>
 <!-- ── Project Modal ─────────────────────────────────────────── -->
 <div aria-hidden="true" aria-labelledby="modalDialogTitle" aria-modal="true" class="modal" id="projectModal" role="dialog">
   <div class="modal-content">
-    <h2 class="modal-dialog-title visually-hidden" id="modalDialogTitle" tabindex="-1">Interactive project</h2>
-    <button aria-label="Close project dialog" class="modal-close" id="modalClose" type="button">&times;</button>
+    <div class="modal-header">
+      <button aria-label="Close project dialog" class="modal-close" id="modalClose" type="button">&times;</button>
+    </div>
     <div id="modalBody"></div>
   </div>
 </div>
@@ -708,6 +709,15 @@ print('Hello, World!')" spellcheck="false"></textarea>
       Press <kbd>Ctrl</kbd><span>+</span><kbd>K</kbd> to focus search
     </div>      
 
+<!-- Info Modal Popup -->
+<div id="infoModalOverlay" class="info-modal-overlay">
+  <div class="info-modal-content">
+    <button class="info-modal-close" id="infoModalClose">&times;</button>
+    <h3 id="infoModalTitle">How to Play</h3>
+    <ul id="infoModalList"></ul>
+    <button class="info-modal-btn" id="infoModalGotIt">Got it</button>
+  </div>
+</div>
 
 </body>
 </html>

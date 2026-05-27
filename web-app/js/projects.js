@@ -1,6 +1,368 @@
 ﻿// Project Registry
 // Each project's HTML and logic lives in its own file under js/projects/
 
+// ============================================
+// PROJECT INSTRUCTIONS FOR INFO TOOLTIPS
+// ============================================
+
+// ============================================
+// PROJECT INSTRUCTIONS FOR INFO TOOLTIPS
+// ============================================
+
+const projectInstructions = {
+    // GAMES
+    "2048-game": {
+        title: "🎮 How to Play 2048",
+        steps: [
+            "Use arrow keys (← ↑ → ↓) or on-screen buttons to move tiles",
+            "Same numbers merge into one (2+2=4, 4+4=8)",
+            "Keep merging to reach 2048!",
+            "Game ends when no moves are possible"
+        ]
+    },
+    "snake-game": {
+        title: "🐍 How to Play Snake",
+        steps: [
+            "Use arrow keys to control the snake",
+            "Eat the red food to grow longer",
+            "Don't hit the walls or yourself",
+            "Score increases with each food eaten"
+        ]
+    },
+    "tic-tac-toe": {
+        title: "❌⭕ How to Play Tic Tac Toe",
+        steps: [
+            "Two players take turns (X and O)",
+            "Click any empty cell to place your mark",
+            "Get 3 in a row (horizontal, vertical, or diagonal) to win",
+            "Game ends when someone wins or board is full (draw)"
+        ]
+    },
+    "hangman": {
+        title: "🎮 How to Play Hangman",
+        steps: [
+            "Guess letters to complete the hidden word",
+            "Each wrong guess adds a body part to the hangman",
+            "6 wrong guesses and you lose",
+            "Use the keyboard or on-screen buttons to guess"
+        ]
+    },
+    "flappy-game": {
+        title: "🐦 How to Play Flappy Game",
+        steps: [
+            "Click or press spacebar to make the bird fly",
+            "Avoid hitting the pipes",
+            "Try to get the highest score",
+            "Game gets faster as you progress"
+        ]
+    },
+    "simon-says": {
+        title: "🎵 How to Play Simon Says",
+        steps: [
+            "Watch the sequence of colors/emojis",
+            "Repeat the sequence in the same order",
+            "Each round adds one more step",
+            "One wrong click ends the game"
+        ]
+    },
+    "rock-paper-scissor": {
+        title: "✊✋✌️ How to Play Rock Paper Scissors",
+        steps: [
+            "Choose Rock, Paper, or Scissors",
+            "Rock beats Scissors, Scissors beats Paper, Paper beats Rock",
+            "Play against the computer",
+            "First to reach the win limit wins the match"
+        ]
+    },
+    "dice-rolling": {
+        title: "🎲 How to Use Dice Roller",
+        steps: [
+            "Choose the number of dice you want to roll",
+            "Click 'Roll Dice' to roll",
+            "Each die shows a random number (1-6)",
+            "Think of it like rolling unbiased physical dice"
+        ]
+    },
+    "coin-flip": {
+        title: "🪙 How to Play Coin Flip",
+        steps: [
+            "First, bet on Heads or Tails",
+            "Then click 'Flip Coin' to toss",
+            "If your prediction is correct, you win!",
+            "If wrong, you lose that round"
+        ]
+    },
+    "number-guessing": {
+        title: "🎯 How to Play Number Guessing",
+        steps: [
+            "Guess a number between 1 and 100",
+            "Get hints if too high or too low",
+            "Try to guess in as few attempts as possible",
+            "Range narrows with each guess"
+        ]
+    },
+    "word-scramble": {
+        title: "📝 How to Play Word Scramble",
+        steps: [
+            "Unscramble the jumbled word",
+            "You have 30 seconds to guess",
+            "Use the shuffle button to rearrange letters",
+            "One hint is available if you need help"
+        ]
+    },
+    "emoji-memory": {
+        title: "😀 How to Play Emoji Memory",
+        steps: [
+            "Click Start to begin the game",
+            "Watch the sequence of emojis shown by the system",
+            "Retrace the sequence by clicking the emoji buttons",
+            "Each level adds one more emoji to the sequence",
+            "Click Reset once to restart from Level 1",
+            "Click Reset twice to end the test"
+        ]
+    },
+    "dots-boxes": {
+        title: "🔲 How to Play Dots and Boxes",
+        steps: [
+            "Choose your grid size",
+            "Select '2 Players' to play with another person",
+            "Select 'AI' to play against the computer",
+            "Choose AI difficulty: Easy, Intermediate, or Hard",
+            "Click between dots to draw lines",
+            "Complete a box to claim it",
+            "Player with the most boxes wins",
+            "Use Reset to restart the match"
+        ]
+    },
+    "math-quiz": {
+        title: "🧮 How to Play Math Quiz",
+        steps: [
+            "Answer math questions correctly",
+            "Answering correctly in a row builds a streak",
+            "Streaks increase your points even more",
+            "You have 3 lives",
+            "Answering wrong costs one life",
+            "Difficulty of each question is displayed"
+        ]
+    },
+    "whack-a-mole": {
+        title: "🔨 How to Play Whack-a-Mole",
+        steps: [
+            "Click on moles as they appear",
+            "Each mole gives points",
+            "Avoid clicking on wrong spots",
+            "Beat the clock for high score"
+        ]
+    },
+    "blackjack-21": {
+        title: "🃏 How to Play Blackjack",
+        steps: [
+            "Get as close to 21 without going over",
+            "Click 'Hit' for another card",
+            "Click 'Stand' to keep your hand",
+            "Beat the dealer's hand to win"
+        ]
+    },
+    "flames": {
+        title: "💖 How to Use FLAMES",
+        steps: [
+            "Enter two names",
+            "Click Calculate",
+            "See your relationship status: Friends, Love, Affection, Marriage, Enemies, Siblings",
+            "Based on letter cancellation method"
+        ]
+    },
+    
+    // MATH PROJECTS
+    "calculator": {
+        title: "🧮 How to Use Calculator",
+        steps: [
+            "Click number buttons to enter values",
+            "Use operators (+, -, ×, ÷)",
+            "Press = to see result",
+            "Use C to clear, ⌫ to delete",
+            "Use √, ^, sin, cos, tan for advanced math"
+        ]
+    },
+    "collatz": {
+        title: "🔢 How Collatz Conjecture Works",
+        steps: [
+            "Enter any positive integer",
+            "If even: divide by 2",
+            "If odd: multiply by 3 and add 1",
+            "The sequence always reaches 1!",
+            "Watch the graph and step counter"
+        ]
+    },
+    "fibonacci": {
+        title: "📈 How Fibonacci Works",
+        steps: [
+            "Enter number of terms",
+            "Each number is sum of previous two",
+            "Sequence starts with 0, 1",
+            "Also shows golden spiral visualization"
+        ]
+    },
+    "pascal-triangle": {
+        title: "🔺 How Pascal's Triangle Works",
+        steps: [
+            "Each number is sum of two above",
+            "Enter number of rows to generate",
+            "Used in combinations and binomial expansions",
+            "Hover over hexagons to highlight"
+        ]
+    },
+    "armstrong": {
+        title: "💎 How Armstrong Numbers Work",
+        steps: [
+            "Enter a number to check",
+            "Sum of digits raised to power of digit count",
+            "If sum equals original number → Armstrong number",
+            "Examples: 153, 370, 371, 407"
+        ]
+    },
+    "prime-analyzer": {
+        title: "🔢 How Prime Analyzer Works",
+        steps: [
+            "Check if a number is prime",
+            "Generate primes up to a limit",
+            "Find primes in a range",
+            "Prime numbers are divisible only by 1 and itself"
+        ]
+    },
+    "projectile-motion": {
+        title: "⚾ How Projectile Motion Works",
+        steps: [
+            "Enter initial velocity and angle",
+            "Calculate time of flight, max height, range",
+            "Visualizes the trajectory"
+        ]
+    },
+    "binary-search": {
+        title: "🔍 How Binary Search Works",
+        steps: [
+            "Enter a sorted array of numbers",
+            "Enter target value to search",
+            "Use 'Random' option to randomize array and target",
+            "Watch the search visualization",
+            "Cuts search space in half each step"
+        ]
+    },
+    "bubble-sort": {
+        title: "🔄 How Bubble Sort Works",
+        steps: [
+            "Enter an array of numbers",
+            "Choose Ascending or Descending order",
+            "Use 'Random' option to randomize array",
+            "Watch the sorting visualization",
+            "Bubble sort compares adjacent elements and swaps"
+        ]
+    },
+    "coordinate-polar-transform": {
+        title: "📐 How Coordinate to Polar Transform Works",
+        steps: [
+            "Enter X coordinate value",
+            "Enter Y coordinate value",
+            "Click Convert to get polar transformation",
+            "Result shows radius (r) and angle (θ)",
+            "Converts Cartesian (x, y) to polar coordinates"
+        ]
+    },
+    "derivative-calculator": {
+        title: "📈 How Derivative Calculator Works",
+        steps: [
+            "Enter the derivative order (n)",
+            "Enter the polynomial coefficients",
+            "Enter the x value to evaluate at",
+            "Choose: 1st derivative, nth derivative, or Evaluate",
+            "Get instant derivative results"
+        ]
+    },
+    "progression-recognizer": { 
+        title: "📊 How AP/GP/AGP/HP Recognizer Works",
+        steps: [
+            "Enter a sequence of numbers",
+            "Click Recognize",
+            "It identifies what type of sequence it is",
+            "AP: Arithmetic Progression (constant difference)",
+            "GP: Geometric Progression (constant ratio)",
+            "AGP: Arithmetic-Geometric Progression",
+            "HP: Harmonic Progression (reciprocals form AP)"
+        ]
+    },
+    
+    // UTILITIES
+    "color-palette": {
+        title: "🎨 How to Use Color Palette",
+        steps: [
+            "Select a website type (Portfolio, E-commerce, etc.)",
+            "Choose a mood (Light, Dark, Neutral, Colorful)",
+            "Click 'Generate Palette'",
+            "Click any color to copy its hex code",
+            "Copy the CSS snippet for your project"
+        ]
+    },
+    "morse-code": {
+        title: "📻 How to Use Morse Code",
+        steps: [
+            "Type text in the input box",
+            "Click Translate to convert to Morse code",
+            "Morse code uses dots (.) and dashes (-)",
+            "Each letter is separated by space"
+        ]
+    },
+    "tower-of-hanoi": {
+        title: "🗼 How to Solve Tower of Hanoi",
+        steps: [
+            "Enter the number of disks",
+            "Click Solve to watch the animation",
+            "See the algorithm solve step by step",
+            "Click Reset to reset all disks",
+            "Rule: No larger disk on top of smaller disk"
+        ]
+    },
+    "caesar-cipher": {
+        title: "🔐 How to Use Caesar Cipher",
+        steps: [
+            "Enter your message",
+            "Choose shift number (1-25)",
+            "Click Encrypt or Decrypt",
+            "Each letter shifts by the chosen amount",
+            "Preserves spaces and punctuation"
+        ]
+    },
+    "number-converter": {
+        title: "🔄 How to Use Number Converter",
+        steps: [
+            "Enter a number",
+            "Choose base to convert from and to",
+            "Supports decimal, binary, octal, hex",
+            "Result appears instantly"
+        ]
+    },
+    "password-forge": {
+        title: "🔑 How to Use Password Forge",
+        steps: [
+            "Choose password length",
+            "Select character types (uppercase, lowercase, numbers, symbols)",
+            "Click Generate",
+            "Copy the secure password"
+        ]
+    },
+    "typing-speed-tester": {
+        title: "⌨️ How to Use Typing Speed Tester",
+        steps: [
+            "Instructions coming soon. Check back later!"
+        ]
+    }
+};
+
+function getProjectInstructions(projectName) {
+    return projectInstructions[projectName] || {
+        title: "ℹ️ How to Use This Project",
+        steps: ["Instructions coming soon. Try exploring the interface!"]
+    };
+}
 
 function getProjectHTML(projectName) {
     const projects = {

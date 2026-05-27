@@ -28,6 +28,62 @@ function escapeHtml(str) {
   return d.innerHTML;
 }
 
+// ============================================
+// INFO MODAL FUNCTIONS
+// ============================================
+
+function showInfoModal(title, steps) {
+    var overlay = document.getElementById('infoModalOverlay');
+    var titleEl = document.getElementById('infoModalTitle');
+    var listEl = document.getElementById('infoModalList');
+    
+    if (!overlay || !titleEl || !listEl) return;
+    
+    titleEl.textContent = title;
+    listEl.innerHTML = steps.map(function(step) {
+        return '<li>' + step + '</li>';
+    }).join('');
+    
+    overlay.classList.add('active');
+    
+    function closeModal() {
+        overlay.classList.remove('active');
+        closeBtn.removeEventListener('click', closeModal);
+        gotItBtn.removeEventListener('click', closeModal);
+        overlay.removeEventListener('click', overlayClick);
+    }
+    
+    function overlayClick(e) {
+        if (e.target === overlay) closeModal();
+    }
+    
+    var closeBtn = document.getElementById('infoModalClose');
+    var gotItBtn = document.getElementById('infoModalGotIt');
+    
+    closeBtn.addEventListener('click', closeModal);
+    gotItBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', overlayClick);
+}
+
+var currentProjectName = '';
+
+function setupModalInfoButton(projectName) {
+    currentProjectName = projectName;
+    var infoBtn = document.getElementById('modalInfoBtn');
+    if (!infoBtn) return;
+    
+    // Remove old listener by cloning
+    var newBtn = infoBtn.cloneNode(true);
+    infoBtn.parentNode.replaceChild(newBtn, infoBtn);
+    
+    newBtn.addEventListener('click', function() {
+        if (typeof getProjectInstructions === 'function') {
+            var info = getProjectInstructions(currentProjectName);
+            showInfoModal(info.title, info.steps);
+        }
+    });
+}
+
 /* ── DOMContentLoaded ──────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function () {
   var html = document.documentElement;
@@ -797,7 +853,6 @@ document.addEventListener('DOMContentLoaded', function () {
   function openProjectSafe(name, trigger) {
     if (!modal || !modalBody) return;
     lastFocusedElement = trigger || document.activeElement;
-    if (modalTitle) modalTitle.textContent = name || 'Interactive project';
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
@@ -812,6 +867,50 @@ document.addEventListener('DOMContentLoaded', function () {
         modalBody.innerHTML = '<div style="padding:1rem;color:var(--text-secondary)">Project content unavailable.</div>';
       }
       if (typeof initializeProject === 'function') initializeProject(name);
+      setupModalInfoButton(name);
+      
+      // Inject info button next to the title (works for all projects)
+var projectContent = modalBody.querySelector('.project-content');
+if (projectContent) {
+    // Try to find the title element (could be h2, or other heading)
+    var firstHeading = projectContent.querySelector('h2, h3, .resume-analyzer-copy h2, .pet-title');
+    
+    if (!firstHeading) {
+        // If no heading found, look for any element with a title-like class
+        firstHeading = projectContent.querySelector('[class*="title"], [class*="header"] h2');
+    }
+    
+    if (firstHeading && !projectContent.querySelector('.inline-info-btn')) {
+        // Create info button
+        var infoBtn = document.createElement('button');
+        infoBtn.className = 'inline-info-btn';
+        infoBtn.innerHTML = 'ⓘ';
+        infoBtn.setAttribute('aria-label', 'How to use this project');
+        
+        // Style the button
+        infoBtn.style.marginLeft = '12px';
+        infoBtn.style.background = 'none';
+        infoBtn.style.border = 'none';
+        infoBtn.style.fontSize = '1.3rem';
+        infoBtn.style.cursor = 'pointer';
+        infoBtn.style.color = 'var(--accent)';
+        infoBtn.style.verticalAlign = 'middle';
+        
+        infoBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (typeof getProjectInstructions === 'function') {
+                var info = getProjectInstructions(name);
+                showInfoModal(info.title, info.steps);
+            }
+        });
+        
+        // Make heading display inline if it's a block element
+        if (firstHeading.style.display !== 'inline-block') {
+            firstHeading.style.display = 'inline-block';
+        }
+        firstHeading.appendChild(infoBtn);
+    }
+}
     });
 
     removeTrap = trapFocus(modal);
@@ -820,7 +919,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (firstFocusable && typeof firstFocusable.focus === 'function') {
       firstFocusable.focus({ preventScroll: true });
     }
-  }
+}
 
   function closeProjectSafe() {
     if (!modal || !modal.classList.contains('active')) return;
